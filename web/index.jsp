@@ -1,0 +1,119 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Holdest
+  Date: 04.11.2020
+  Time: 16:12
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="main.js"></script>
+  <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/index.css">
+</head>
+<body onload="loadScripts()">
+<header>
+  <table width="100%">
+    <tr>
+      <td width="33%" align="center">
+                    <span class = "header">P3213 Елохов Даниил
+                    </span>
+      </td>
+      <td width="33%" align="center">
+      </td>
+      <td width="33%" align="center">
+                    <span class = "header">Вариант: 2407
+                    </span>
+      </td>
+    </tr>
+  </table>
+</header>
+
+<table style="border-spacing: 30px;">
+  <tr>
+    <td>
+      <div class="mainForm">
+        <div class="border" style="height: 100%">
+          <form name=myForm method="post" >
+            <table class="Form">
+              <tr><td colspan="2"><legend>Введите координаты точки</legend></td></tr>
+              <tr>
+              <tr><td colspan="2"><span id="errorAns" class="errorAns"></span></td></tr>
+              <tr><td colspan="2"><span id="errorAns2" class="errorAns"></span></td></tr>
+              <tr>
+                <td><div style="width: 120px">Изменение Х:</div></td>
+                <td><div style="width: 400px">
+                  <label>-4<input required name="formRadiosX" type="radio" value="-4"></label>
+                  <label>-3<input required name="formRadiosX" type="radio" value="-3"></label>
+                  <label>-2<input required name="formRadiosX" type="radio" value="-2"></label>
+                  <label>-1<input required name="formRadiosX" type="radio" value="-1"></label>
+                  <label>0<input required name="formRadiosX" type="radio" value="0"></label>
+                  <label>1<input required name="formRadiosX" type="radio" value="1"></label>
+                  <label>2<input required name="formRadiosX" type="radio" value="2"></label>
+                  <label>3<input required name="formRadiosX" type="radio" value="3"></label>
+                  <label>4<input required name="formRadiosX" type="radio" value="4"></label>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Изменение Y:</td>
+                <td>
+                  <label >(-5 ... 3) <input required id="formTextY" name="formTextY"  type="text"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>Изменение R:</td>
+                <td>
+                  <label >1.0 <input name="formCheckBoxesR"  type="checkbox" value="1.0"></label>
+                  <label >1.5 <input name="formCheckBoxesR"  type="checkbox" value="1.5"></label>
+                  <label >2.0 <input name="formCheckBoxesR"  type="checkbox" value="2.0"></label>
+                  <label >2.5 <input name="formCheckBoxesR"  type="checkbox" value="2.5"></label>
+                  <label >3.0 <input name="formCheckBoxesR"  type="checkbox" value="3.0"></label>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <label >Подтвердить: <button type="button" name="submit" id=submitFormButton >Отправить</button></label>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" id="answer">
+                </td>
+                <td></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="ans">
+        <div class="mainAns">
+          <table class="formAns" id="prevAns" >
+            <tr>
+              <td>X</td>
+              <td>Y</td>
+              <td>R</td>
+              <td>Результат</td>
+              <td>Время вопроса</td>
+              <td>Время выполнения (мс)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="diagram">
+        <div class="border">
+          <img src="diargam.jpg">
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
