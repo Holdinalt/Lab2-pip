@@ -1,7 +1,10 @@
-package validator;
+package validation;
 
+import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import java.util.Arrays;
 import java.util.List;
+
 
 public class Validator implements Validatable{
 

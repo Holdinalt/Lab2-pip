@@ -3,17 +3,21 @@ package factories;
 import Cheker.HitCheckable;
 import Cheker.HitChecker;
 import models.HitResult;
-import validator.UnvalidExeption;
-import validator.Validator;
-
-import javax.ejb.EJB;
+import validation.UnvalidExeption;
+import validation.Validatable;
+import validation.Validator;
 
 public class HitResultFactory implements HitResultCreationAbility{
 
-    @EJB private Validator validator;
-    @EJB private HitChecker hitChecker;
+    private final Validatable validator;
+    private final HitCheckable hitChecker;
 
-    public HitResult createHitResult(String xValueString, String yValueString, String rValueString) throws CreatingExeption {
+    public HitResultFactory() {
+        this.validator = new Validator();
+        this.hitChecker = new HitChecker();
+    }
+
+    public HitResult createHitResult(String xValueString, String yValueString, String rValueString) throws CreatingException {
 
         Double xValue = Double.parseDouble(xValueString);
         Double yValue = Double.parseDouble(yValueString);
@@ -22,9 +26,9 @@ public class HitResultFactory implements HitResultCreationAbility{
         try {
             validator.checkValues(xValue, yValue, rValue);
         } catch (UnvalidExeption e) {
-            throw new CreatingExeption(e.getMessage());
+            throw new CreatingException(e.getMessage());
         }
-        
+
         boolean result = hitChecker.Check(xValue, yValue, rValue);
 
         return new HitResult(xValue, yValue, rValue, result);

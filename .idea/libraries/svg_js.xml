@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="svg.js">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/svg.js.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

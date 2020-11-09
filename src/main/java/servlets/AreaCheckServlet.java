@@ -5,6 +5,7 @@ import models.HitResult;
 import models.storage.HitResultStorage;
 import models.storage.Storagable;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +50,7 @@ public class AreaCheckServlet extends HttpServlet{
         }
 
         httpSession.setAttribute("hitResultStorage", hitResultStorage);
+        httpSession.setAttribute("results", hitResultStorage.toString());
 
         req.setAttribute("Hit-Result", hitResult); //Зачем?
         req.getRequestDispatcher("/result.jsp").forward(req, resp);

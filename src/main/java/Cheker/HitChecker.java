@@ -1,5 +1,6 @@
 package Cheker;
 
+
 public class HitChecker implements HitCheckable{
 
     public boolean Check(Double X, Double Y, Double R) {

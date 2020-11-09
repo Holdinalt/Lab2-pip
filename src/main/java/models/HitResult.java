@@ -31,15 +31,6 @@ public class HitResult {
 
     @Override
     public String toString() {
-        return "HitResult{"
-                + "xValue="
-                + xValue
-                + ", yValue="
-                + yValue
-                + ", rValue="
-                + rValue
-                + ", result="
-                + hitted
-                + '}';
+        return " <tr> <td>" + getX() + "</td> <td>" + getY() + "</td> <td>" + getR() + "</td> <td>" + isHitted() + "</td>";
     }
 }

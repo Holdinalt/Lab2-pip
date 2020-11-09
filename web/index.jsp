@@ -12,7 +12,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <meta charset="UTF-8">
   <title>Title</title>
-  <script src="main.js"></script>
+  <script src="${pageContext.request.contextPath}/src/js/main.js"></script>
   <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/index.css">
 </head>
 <body onload="loadScripts()">
@@ -47,32 +47,36 @@
               <tr>
                 <td><div style="width: 120px">Изменение Х:</div></td>
                 <td><div style="width: 400px">
-                  <label>-4<input required name="formRadiosX" type="radio" value="-4"></label>
-                  <label>-3<input required name="formRadiosX" type="radio" value="-3"></label>
-                  <label>-2<input required name="formRadiosX" type="radio" value="-2"></label>
-                  <label>-1<input required name="formRadiosX" type="radio" value="-1"></label>
-                  <label>0<input required name="formRadiosX" type="radio" value="0"></label>
-                  <label>1<input required name="formRadiosX" type="radio" value="1"></label>
-                  <label>2<input required name="formRadiosX" type="radio" value="2"></label>
-                  <label>3<input required name="formRadiosX" type="radio" value="3"></label>
-                  <label>4<input required name="formRadiosX" type="radio" value="4"></label>
+                  <select id="selectX">
+                    <option value="-3" selected="selected">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
                 </div>
                 </td>
               </tr>
               <tr>
                 <td>Изменение Y:</td>
                 <td>
-                  <label >(-5 ... 3) <input required id="formTextY" name="formTextY"  type="text"></label>
+                  <label >(-3 ... 5) <input required id="formTextY" name="formTextY"  type="text"></label>
                 </td>
               </tr>
               <tr>
                 <td>Изменение R:</td>
                 <td>
-                  <label >1.0 <input name="formCheckBoxesR"  type="checkbox" value="1.0"></label>
-                  <label >1.5 <input name="formCheckBoxesR"  type="checkbox" value="1.5"></label>
-                  <label >2.0 <input name="formCheckBoxesR"  type="checkbox" value="2.0"></label>
-                  <label >2.5 <input name="formCheckBoxesR"  type="checkbox" value="2.5"></label>
-                  <label >3.0 <input name="formCheckBoxesR"  type="checkbox" value="3.0"></label>
+                  <select id="selectR">
+                    <option value="1" selected="selected">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
                 </td>
               </tr>
               <tr>
@@ -91,25 +95,51 @@
       </div>
     </td>
     <td>
-      <div class="ans">
-        <div class="mainAns">
-          <table class="formAns" id="prevAns" >
-            <tr>
-              <td>X</td>
-              <td>Y</td>
-              <td>R</td>
-              <td>Результат</td>
-              <td>Время вопроса</td>
-              <td>Время выполнения (мс)</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </td>
-    <td>
       <div class="diagram">
         <div class="border">
-          <img src="diargam.jpg">
+          <div class="convex-plate" id="graph-plate">
+            <svg id="graph-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- circle -->
+              <path class="graph-shape" d="M 100 150 A 50 50, 0, 0, 1, 150 100 L 150 150 Z"></path>
+
+              <!-- square -->
+              <rect class="graph-shape" height="100" width="100" x="150" y="50"></rect>
+
+              <!-- triangle -->
+              <polygon class="graph-shape" points="100,150 150,150 150,250"></polygon>
+
+              <!-- axles -->
+              <text class="graph-axle-text" x="290" y="140">x</text>
+              <line class="graph-axle-line" x1="0" x2="295" y1="150" y2="150"></line>
+              <polygon class="graph-axle-arrow" points="299,150 290,155 290,145"></polygon>
+
+              <text class="graph-axle-text" x="160" y="10">y</text>
+              <line class="graph-axle-line" x1="150" x2="150" y1="5" y2="300"></line>
+              <polygon class="graph-axle-arrow" points="150,1 145,10 155,10"></polygon>
+
+              <!-- points -->
+              <line class="graph-point" x1="50" x2="50" y1="145" y2="155"></line>
+              <line class="graph-point" x1="100" x2="100" y1="145" y2="155"></line>
+              <line class="graph-point" x1="200" x2="200" y1="145" y2="155"></line>
+              <line class="graph-point" x1="250" x2="250" y1="145" y2="155"></line>
+
+              <line class="graph-point" x1="145" x2="155" y1="250" y2="250"></line>
+              <line class="graph-point" x1="145" x2="155" y1="200" y2="200"></line>
+              <line class="graph-point" x1="145" x2="155" y1="100" y2="100"></line>
+              <line class="graph-point" x1="145" x2="155" y1="50" y2="50"></line>
+
+              <!-- labels -->
+              <text class="graph-label r-whole-neg" text-anchor="middle" x="50" y="140">-R</text>
+              <text class="graph-label r-half-neg" text-anchor="middle" x="100" y="140">-R/2</text>
+              <text class="graph-label r-half-pos" text-anchor="middle" x="200" y="140">R/2</text>
+              <text class="graph-label r-whole-pos" text-anchor="middle" x="250" y="140">R</text>
+
+              <text class="graph-label r-whole-neg" text-anchor="start" x="160" y="255">-R</text>
+              <text class="graph-label r-half-neg" text-anchor="start" x="160" y="205">-R/2</text>
+              <text class="graph-label r-half-pos" text-anchor="start" x="160" y="105">R/2</text>
+              <text class="graph-label r-whole-pos" text-anchor="start" x="160" y="55">R</text>
+            </svg>
+          </div>
         </div>
       </div>
     </td>
