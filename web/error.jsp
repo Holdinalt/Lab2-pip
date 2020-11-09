@@ -12,14 +12,16 @@
         message = "No description presented.";
     }
 %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=400, maximum-scale=1" name="viewport"/>
     <title>Lab 2</title>
+    <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/error.css">
 </head>
 <body>
-<main id="error">
+<main id="error" class="error">
     <h3 class="convex-plate">Error. <%=message%>
     </h3>
     <button class="convex-button back-button" onclick="window.location.replace('index.jsp')">

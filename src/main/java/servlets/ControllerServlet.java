@@ -16,19 +16,22 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            String xValueString = req.getParameter("#selectX");
+            String xValueString = req.getParameter("selectX");
             String yValueString = req.getParameter("formTextY");
             String rValueString = req.getParameter("selectR");
-            Validatable validator = new Validator();
             Double xValue = Double.parseDouble(xValueString);
             Double yValue = Double.parseDouble(yValueString);
             Double rValue = Double.parseDouble(rValueString);
+            Validatable validator = new Validator();
             validator.checkValues(xValue, yValue, rValue);
         } catch (Exception e) {
-            req.setAttribute("Error-Message", e.getMessage());
+            String xValueString = req.getParameter("selectX");
+            String yValueString = req.getParameter("formTextY");
+            String rValueString = req.getParameter("selectR");
+            req.setAttribute("Error-Message", "Bad values " + xValueString + " " + yValueString + " " + rValueString);
             req.getRequestDispatcher("/error.jsp").forward(req, resp);
         }
 

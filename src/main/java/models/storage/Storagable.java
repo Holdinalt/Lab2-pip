@@ -12,5 +12,5 @@ public interface Storagable extends Serializable {
 
     void addHitResult(HitResult hitResult);
 
-    LinkedList<HitResult> getHitResultList();
+    List<HitResult> getHitResultList();
 }

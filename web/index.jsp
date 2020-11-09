@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <%--
 Created by IntelliJ IDEA.
@@ -13,7 +14,8 @@ To change this template use File | Settings | File Templates.
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="${pageContext.request.contextPath}/src/js/grafic.js" ></script>
-    <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/index_new.css">
+    <script src="${pageContext.request.contextPath}/src/js/main.js" ></script>
+    <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/index.css">
 </head>
 <body>
 <header>
@@ -35,7 +37,7 @@ To change this template use File | Settings | File Templates.
 <div class="diagram">
     <div class="border">
         <div class="convex-plate" id="graph-plate">
-            <svg id="graph-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" onclick="svgClick(event)" onmousemove="svgMouth(event)">
+            <svg id="graph-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" onclick="svgClick(event); clickSubmit()" onmousemove="svgMouth(event); validateAll()">
 
                 <path class="graph-shape" d="M 100 150 A 50 50, 0, 0, 1, 150 100 L 150 150 Z"></path>
 
@@ -93,7 +95,7 @@ To change this template use File | Settings | File Templates.
                 <tr>
                     <td><div style="width: 120px">Изменение Х:</div></td>
                     <td><div style="width: 400px">
-                        <select id="selectX" onchange="validateAll()">
+                        <select name="selectX" id="selectX" onchange="validateAll()">
                             <option value="-3" selected="selected">-3</option>
                             <option value="-2">-2</option>
                             <option value="-1">-1</option>
@@ -110,13 +112,13 @@ To change this template use File | Settings | File Templates.
                 <tr>
                     <td>Изменение Y:</td>
                     <td>
-                        <label >(-3 ... 5) <input required id="formTextY" onchange="validateAll()" name="formTextY"  type="text" onkeydown="antiEnter(event)"></label>
+                        <label >(-3 ... 5) <input required id="formTextY"  name="formTextY"  type="text" onkeydown="antiEnter(event);" onkeyup="validateAll()"></label>
                     </td>
                 </tr>
                 <tr>
                     <td>Изменение R:</td>
                     <td>
-                        <select id="selectR" onchange="resetR(); validateAll()">
+                        <select id="selectR" name="selectR" onchange="resetR(); validateAll()">
                             <option value="1" selected="selected">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -127,7 +129,7 @@ To change this template use File | Settings | File Templates.
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <label >Подтвердить: <button type="button" name="submit" id=submitFormButton >Отправить</button></label>
+                        <label >Подтвердить: <button type="submit" name="submit" id=submitFormButton onmouseenter="validateAll()">Отправить</button></label>
                     </td>
                 </tr>
                 <tr>
@@ -156,7 +158,7 @@ To change this template use File | Settings | File Templates.
                     <td>${hitResult.x}</td>
                     <td>${hitResult.y}</td>
                     <td>${hitResult.r}</td>
-                    <td>${hitResult.result ? "Yes" : "No"}</td>
+                    <td>${hitResult.isHitted() ? "Yes" : "No"}</td>
                 </tr>
             </c:forEach>
             </tbody>

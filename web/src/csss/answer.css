@@ -1,0 +1,35 @@
+header {
+    text-shadow: black 0 0 2px;
+    color: antiquewhite;
+    font-family: fantasy;
+    font-size: 200%;
+}
+body{
+    font-family: Gill Sans, sans-serif;
+    background-color: gray;
+}
+
+div.answerTable{
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 25px;
+    background-color: antiquewhite;
+    width: 500px;
+    height: 100px;
+}
+
+.ansTable{
+    border: 3px solid gray;
+    overflow: auto;
+    width: 500px;
+    height: 100px;
+}
+
+table {
+    border-collapse: collapse;
+}
+th,
+td {
+    border: 1px solid #cecfd5;
+    padding: 10px 15px;
+}

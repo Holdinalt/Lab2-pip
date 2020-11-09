@@ -1,0 +1,19 @@
+header {
+    text-shadow: black 0 0 2px;
+    color: antiquewhite;
+    font-family: fantasy;
+    font-size: 200%;
+}
+body{
+    font-family: Gill Sans, sans-serif;
+    background-color: gray;
+}
+
+div.error{
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 25px;
+    background-color: antiquewhite;
+    width: 500px;
+    height: 300px;
+}

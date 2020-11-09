@@ -8,41 +8,39 @@
         return;
     }
 %>
-  Created by IntelliJ IDEA.
-  User: Holdest
-  Date: 05.11.2020
-  Time: 23:46
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/answer.css">
     <title>Answer</title>
 </head>
 <body>
 <div>
     <div class="answerTable">
         <div class="mainAns">
-            <thead>
-            <tr>
-                <th>X value</th>
-                <th>Y value</th>
-                <th>R value</th>
-                <th>Area hit</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><%=hitResult.getX()%>
-                </td>
-                <td><%=hitResult.getY()%>
-                </td>
-                <td><%=hitResult.getR()%>
-                </td>
-                <td><%=hitResult.isHitted() ? "Yes" : "No"%>
-                </td>
-            </tr>
-            </tbody>
+            <table class="ansTable">
+                <thead>
+                <tr>
+                    <th>X value</th>
+                    <th>Y value</th>
+                    <th>R value</th>
+                    <th>Area hit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><%=hitResult.getX()%>
+                    </td>
+                    <td><%=hitResult.getY()%>
+                    </td>
+                    <td><%=hitResult.getR()%>
+                    </td>
+                    <td><%=hitResult.isHitted() ? "Yes" : "No"%>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ header {
 body{
     font-family: Gill Sans, sans-serif;
     background-color: gray;
+    margin: 100px;
 }
 span.errorAns{
     color: red;
@@ -27,16 +28,20 @@ div.mainForm{
     background-color: antiquewhite;
     width: 600px;
     height: 200px;
+    float: right;
+    margin: 50px;
 
 }
 
-div.ans{
+div.answerTable{
     overflow: hidden;
     padding: 30px;
     border-radius: 25px;
     background-color: antiquewhite;
     width: 500px;
     height: 300px;
+    float: right;
+    margin: 50px;
 }
 
 .formAns{
@@ -54,15 +59,30 @@ div.ans{
     padding: 25px;
     border-radius: 25px;
     background-color: antiquewhite;
-    width: 500px;
-    height: 300px;
+    width: 600px;
+    height: 600px;
+    float: right;
+    margin: 50px;
 }
 
 .border{
     border: 3px solid gray;
 }
 
-#graph-plate{
-    width: 600px;
-    height: 600px;
+.graph-shape{
+    opacity: 50%;
 }
+
+rect.graph-shape{
+    fill: greenyellow;
+}
+
+path.graph-shape{
+    fill: orange;
+}
+
+polygon.graph-shape{
+    fill: red;
+}
+
+
