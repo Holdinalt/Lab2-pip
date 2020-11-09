@@ -29,8 +29,12 @@ public class HitResult {
         return hitted;
     }
 
+    public String isHittedtoString(){
+        return isHitted() ? "Yes" : "No";
+    }
+
     @Override
     public String toString() {
-        return " <tr> <td>" + getX() + "</td> <td>" + getY() + "</td> <td>" + getR() + "</td> <td>" + isHitted() + "</td>";
+        return " <tr> <td>" + getX() + "</td> <td>" + getY() + "</td> <td>" + getR() + "</td> <td>" + isHittedtoString() + "</td>";
     }
 }

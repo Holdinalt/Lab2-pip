@@ -1,4 +1,13 @@
-<%--
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="models.HitResult" %>
+<%
+    HitResult hitResult = (HitResult) request.getAttribute("Hit-Result");
+    if (hitResult == null) {
+        request.setAttribute("Error-Message", "Hit result not found.");
+        request.getRequestDispatcher("/error.jsp").forward(request, response);
+        return;
+    }
+%>
   Created by IntelliJ IDEA.
   User: Holdest
   Date: 05.11.2020
@@ -14,16 +23,26 @@
 <div>
     <div class="answerTable">
         <div class="mainAns">
-            <table class="formAns" id="prevAns" >
-                <tr>
-                    <td>X</td>
-                    <td>Y</td>
-                    <td>R</td>
-                    <td>Результат</td>
-                    <td>Время вопроса</td>
-                    <td>Время выполнения (мс)</td>
-                </tr>
-            </table>
+            <thead>
+            <tr>
+                <th>X value</th>
+                <th>Y value</th>
+                <th>R value</th>
+                <th>Area hit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><%=hitResult.getX()%>
+                </td>
+                <td><%=hitResult.getY()%>
+                </td>
+                <td><%=hitResult.getR()%>
+                </td>
+                <td><%=hitResult.isHitted() ? "Yes" : "No"%>
+                </td>
+            </tr>
+            </tbody>
         </div>
     </div>
 </div>

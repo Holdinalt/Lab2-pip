@@ -12,7 +12,7 @@ To change this template use File | Settings | File Templates.
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="${pageContext.request.contextPath}/src/js/test.js" ></script>
+    <script src="${pageContext.request.contextPath}/src/js/grafic.js" ></script>
     <link rel = stylesheet type="text/css" href="${pageContext.request.contextPath}/src/csss/index_new.css">
 </head>
 <body>
@@ -84,7 +84,7 @@ To change this template use File | Settings | File Templates.
 </div>
 <div class="mainForm">
     <div class="border" style="height: 100%">
-        <form name=myForm method="post">
+        <form name=myForm method="post" action="server">
             <table class="Form">
                 <tr><td colspan="2"><legend>Введите координаты точки</legend></td></tr>
                 <tr>
@@ -93,7 +93,7 @@ To change this template use File | Settings | File Templates.
                 <tr>
                     <td><div style="width: 120px">Изменение Х:</div></td>
                     <td><div style="width: 400px">
-                        <select id="selectX">
+                        <select id="selectX" onchange="validateAll()">
                             <option value="-3" selected="selected">-3</option>
                             <option value="-2">-2</option>
                             <option value="-1">-1</option>
@@ -110,13 +110,13 @@ To change this template use File | Settings | File Templates.
                 <tr>
                     <td>Изменение Y:</td>
                     <td>
-                        <label >(-3 ... 5) <input required id="formTextY" name="formTextY"  type="text"></label>
+                        <label >(-3 ... 5) <input required id="formTextY" onchange="validateAll()" name="formTextY"  type="text" onkeydown="antiEnter(event)"></label>
                     </td>
                 </tr>
                 <tr>
                     <td>Изменение R:</td>
                     <td>
-                        <select id="selectR" onchange="resetR()">
+                        <select id="selectR" onchange="resetR(); validateAll()">
                             <option value="1" selected="selected">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -142,14 +142,24 @@ To change this template use File | Settings | File Templates.
 <div class="answerTable">
     <div class="mainAns">
         <table class="formAns" id="prevAns" >
+            <thead>
             <tr>
-                <td>X</td>
-                <td>Y</td>
-                <td>R</td>
-                <td>Результат</td>
-                <td>Время вопроса</td>
-                <td>Время выполнения (мс)</td>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Area hit</th>
             </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="hitResult" items="${sessionScope.hitResultStorage.hitResultList}">
+                <tr>
+                    <td>${hitResult.x}</td>
+                    <td>${hitResult.y}</td>
+                    <td>${hitResult.r}</td>
+                    <td>${hitResult.result ? "Yes" : "No"}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
         </table>
     </div>
 </div>

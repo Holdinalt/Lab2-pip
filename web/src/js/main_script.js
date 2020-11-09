@@ -1,28 +1,56 @@
-const $body = $('body');
+let xValues = [-3, -2, -1, -0, 1, 2, 3, 4, 5];
+let rValues = [1, 2, 3, 4, 5];
 
-const $inputForm = $('#input-from');
-const $submitButton = $('#submit-button');
+let checkX = (xValue) => this.xValues.includes(xValue);
+let checkR = (rValue) => this.rValues.includes(rValue);
 
-const $xSelect = $('#selectX');
-const $yText = $('#formTextY');
-const $rSelect = $('#selectR');
+function checkY(str){
+    let path = /^0*((-[1-4](\.|,)[0-9]*)|([0-2](\.|,)[0-9]*)|-5(\.|,)0|3(\.|,)0|-[1-5]|[0-3])$/
+    if(path.test(str)){
+    }else{
+        return false
+    }
+    console.log(str)
+    return true
+}
 
-const $graphSvg = $('#graph-svg');
+function validate(xValue, yValue, rValue){
+    let flag = true;
+    if(!checkX(xValue)){
+        flag = false;
+    }
+    if(!checkY(yValue)){
+        flag = false;
+    }
+    if(!checkR(rValue)){
+        flag = false;
+    }
+    if(flag){
+        hideError();
+    }else{
+        showError();
+    }
+    return flag;
+}
 
-const SCALE_X = $graphSvg.attr('viewBox').split(' ')[2] / $graphSvg.width();
-const SCALE_Y = $graphSvg.attr('viewBox').split(' ')[3] / $graphSvg.height();
-
-
-
-
-
-
-const getPositionX = (e) => {
-    let target = $graphSvg.getBoundingClientRect();
-    return e.clientX - target.left;
+function showError(error){
+    $('#errorAns').innerHTML = error;
+    $('#submitFormButton').removeAttr("type");
 };
 
-const getPositionY = (e) => {
-    let target = $graphSvg.getBoundingClientRect();
-    return e.clientY - target.top;
+function hideError(){
+    $('#errorAns').innerHTML = '';
+    $('#submitFormButton').attr("type", "submit");
 };
+
+function validateAll(){
+    let formSelectX = $("#selectX").val();
+    let formTextY = $("#formTextY").val();
+    let formSelectR = $("#selectR").val();
+    if(validate(formSelectX, formTextY, formSelectR)){
+        hideError();
+    }else{
+        showError("Неверные данные");
+    }
+}
+

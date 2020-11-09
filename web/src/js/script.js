@@ -43,24 +43,6 @@ $(() => {
         $noDataYetText: $('#results-plate > span:first-of-type'),
     });
 
-    results.setLabel();
-
-    $yText.matcher(/^[+-]?\d*?[.,]?\d*?$/);
-
-    $rText.matcher(/^\+?\d*?[.,]?\d*?$/);
-
-    $graphSvg.mouseleave(() => {
-        $rText.keyup();
-        $xSelect.change();
-        $yText.keyup();
-        graph.hideError();
-    });
-
-    $graphSvg.mousemove((event) => {
-        const offset = $graphSvg.offset();
-        graph.drawXLine((event.pageX - offset.left) * SCALE_X);
-        graph.drawYLine((event.pageY - offset.top) * SCALE_Y);
-    });
 
     $graphSvg.click(() => {
         $xSelect.validity('');
